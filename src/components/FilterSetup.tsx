@@ -144,7 +144,7 @@ const FilterSetup: FunctionComponent<FilterSetupProps> = () => {
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
-    setTimeout(() => handleClose(), 1500);
+    setTimeout(() => handleClose(), 1800);
   };
 
   const handleClose = () => {
@@ -235,7 +235,7 @@ const FilterSetup: FunctionComponent<FilterSetupProps> = () => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    key={axieClass}
+                    key={axieClass[0]}
                     size="small"
                     onChange={(e) => handleClassChange(axieClass, e)}
                     name={axieClass}
@@ -251,7 +251,7 @@ const FilterSetup: FunctionComponent<FilterSetupProps> = () => {
         <div style={{ marginTop: 20 }}>
           {axieStats.map((axieStat) => {
             return (
-              <Grid container spacing={5}>
+              <Grid container spacing={5} key={axieStat[0]}>
                 <Grid item xs={2}>
                   <div className="text">{axieStat.name}</div>
                 </Grid>
@@ -278,7 +278,7 @@ const FilterSetup: FunctionComponent<FilterSetupProps> = () => {
         </div>
       </div>
       <Grid container>
-        <Grid item xs={8}>
+        <Grid item xs={7}>
           <TextField
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               handleNameChange(event)
@@ -294,7 +294,7 @@ const FilterSetup: FunctionComponent<FilterSetupProps> = () => {
         <Grid item xs={1}>
           <div></div>
         </Grid>
-        <Grid item xs>
+        <Grid item xs={1}>
           <Button
             aria-describedby={id}
             onClick={(e) => handleCreateFilter(e)}
@@ -306,7 +306,7 @@ const FilterSetup: FunctionComponent<FilterSetupProps> = () => {
             Save
           </Button>
           <Popover
-            style={{ marginRight: 50 }}
+            style={{ marginLeft: 30 }}
             id={id}
             open={open}
             anchorEl={anchorEl}
@@ -317,7 +317,7 @@ const FilterSetup: FunctionComponent<FilterSetupProps> = () => {
             }}
             transformOrigin={{
               vertical: "bottom",
-              horizontal: "center",
+              horizontal: "right",
             }}
           >
             <Typography style={{ padding: 10 }}>
@@ -325,6 +325,9 @@ const FilterSetup: FunctionComponent<FilterSetupProps> = () => {
               <div style={{ fontSize: 12 }}>Check Market Filter Tab!</div>
             </Typography>
           </Popover>
+        </Grid>
+        <Grid item xs={2}>
+          <div></div>
         </Grid>
       </Grid>
     </div>
@@ -433,7 +436,7 @@ const axieParts = [
   { part: "Little Owl", card: "Dark Swoop" },
   { part: "Swallow", card: "Early Bird" },
   { part: "Feather Fan", card: "Sunder Armor" },
-  { part: "The Last One", card: "Risky Fether" },
+  { part: "The Last One", card: "Risky Feather" },
   { part: "Cloud", card: "Puffy Smack" },
   { part: "Granma's Fan", card: "Cool Breeze" },
   { part: "Post Fight", card: "All-out Shot" },
@@ -480,7 +483,7 @@ const axieParts = [
   { part: "Carrot", card: "Carrot Hammer" },
   { part: "Cattail", card: "Cattail Slap" },
   { part: "Hatsune", card: "Leek Leak" },
-  { part: "Yam ", card: "Gas Unleash" },
+  { part: "Yam", card: "Gas Unleash" },
   { part: "Potato Leaf", card: "Hot Butt" },
   // Reptile
   { part: "Bone Sail", card: "Ivory Chop" },

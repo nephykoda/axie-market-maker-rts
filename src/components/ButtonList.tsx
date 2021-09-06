@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
 import { Button, ButtonGroup } from "@material-ui/core";
 import { FiltersContext } from "../store/filters-context";
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
 // React.FC<> allows you to define extra props on top of standard ones
-const ButtonList: React.FC = (props) => {
+const ButtonList: React.FC<{ onSelectButton: ({}) => void }> = (props) => {
   const filtersCtx = useContext(FiltersContext);
   const buttonHandler = (itemId: any) => {
-    const newZ = filtersCtx.items.filter((item) => item.id === itemId);
-    console.log(newZ[0]);
+    const selectedFilter = filtersCtx.items.filter(
+      (item) => item.id === itemId
+    );
+    props.onSelectButton(selectedFilter[0]);
   };
 
   return (
@@ -22,11 +23,9 @@ const ButtonList: React.FC = (props) => {
           key={item.id}
         >
           <Button
-            onClick={() => buttonHandler(item.id)}
-            // variant="contained"
-            // color="primary"
-            // key={item.id}
-            // style={{ margin: 5 }}
+            onClick={() => {
+              buttonHandler(item.id);
+            }}
           >
             {item.name}
           </Button>
@@ -34,10 +33,6 @@ const ButtonList: React.FC = (props) => {
             onClick={filtersCtx.removeAxieFilters.bind(null, item.id)}
             variant="outlined"
             size="small"
-            // variant="contained"
-            // color="primary"
-            // key={item.id}
-            // style={{ margin: 5 }}
           >
             x
           </Button>

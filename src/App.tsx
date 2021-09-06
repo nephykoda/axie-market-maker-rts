@@ -1,5 +1,11 @@
 import { Tab, Tabs, AppBar, Box, Typography } from "@material-ui/core";
-import React, { useState, useLayoutEffect, useRef, useContext } from "react";
+import React, {
+  useState,
+  useLayoutEffect,
+  useRef,
+  useContext,
+  useEffect,
+} from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import "./App.css";
 import { DOMMessageResponse, DOMFilterBuild } from "./types";
@@ -9,21 +15,22 @@ import AxieFiltersProvider from "./store/filters-context";
 import { FiltersContext } from "./store/filters-context";
 import ButtonList from "./components/ButtonList";
 
+const initialFilterState = {};
+
 function App(props: any) {
-  const [filters, setFilters] = useState([]);
+  const [filters, setFilters] = useState(initialFilterState);
   const [title, setTitle] = useState("");
-  const [headlines, setHeadlines] = useState<string[]>([]);
+  // const [headlines, setHeadlines] = useState<string[]>([]);
   const [button, setButton] = useState<boolean>(false);
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
-  const filtersCtx = useContext(FiltersContext);
 
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      backgroundColor: theme.palette.background.paper,
-      width: 500,
-    },
-  }));
+  // const useStyles = makeStyles((theme) => ({
+  //   root: {
+  //     backgroundColor: theme.palette.background.paper,
+  //     width: 500,
+  //   },
+  // }));
 
   const handleChange = (event: any, newValue: any) => {
     setValue(newValue);
@@ -33,9 +40,8 @@ function App(props: any) {
     setValue(index);
   };
 
-  const buttonHandler = () => {
-    setButton((prevState) => !prevState);
-    console.log(button);
+  const buttonHandler = (obj: {}) => {
+    setFilters(obj);
   };
 
   const firstUpdate = useRef(true);
@@ -44,6 +50,12 @@ function App(props: any) {
       firstUpdate.current = false;
       return;
     }
+    if (
+      filters && // 👈 null and undefined check
+      Object.keys(filters).length === 0 &&
+      filters.constructor === Object
+    )
+      return;
 
     chrome.tabs &&
       chrome.tabs.query(
@@ -61,24 +73,25 @@ function App(props: any) {
            */
           chrome.tabs.sendMessage(
             tabs[0].id || 0,
-            // { type: "GET_DOM" } as DOMMessage,
             {
               type: "FILTER_BUILD",
-              filterConditions: ["hi", "hi"],
+              filterConditions: filters,
             } as DOMFilterBuild,
             (response: DOMMessageResponse) => {
-              setTitle(response.title);
-              setHeadlines(response.headlines);
+              // setTitle(response.title);
+              // setHeadlines(response.headlines);
             }
           );
         }
       );
-  }, [button]);
+    window.close();
+    setFilters(initialFilterState);
+  }, [filters]);
 
   return (
     <AxieFiltersProvider>
       <div className="App">
-        <h1>Axie Market Maker</h1>
+        <h1>Axie Market Maker 🚀</h1>
         <AppBar position="static" color="default">
           <Tabs
             value={value}
@@ -98,10 +111,7 @@ function App(props: any) {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            <ButtonList />
-            {/* <button className="btn-19" onClick={buttonHandler}>
-              Reptile Termi
-            </button> */}
+            <ButtonList onSelectButton={buttonHandler} />
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
             <FilterSetup />
