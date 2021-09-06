@@ -1,15 +1,23 @@
 import { Tab, Tabs, AppBar, Box, Typography } from "@material-ui/core";
-import React, { useState, useLayoutEffect, useRef } from "react";
+import React, { useState, useLayoutEffect, useRef, useContext } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import "./App.css";
-import { DOMMessage, DOMMessageResponse, DOMFilterBuild } from "./types";
+import { DOMMessageResponse, DOMFilterBuild } from "./types";
 import SwipeableViews from "react-swipeable-views";
 import FilterSetup from "./components/FilterSetup";
+import AxieFiltersProvider from "./store/filters-context";
+import { FiltersContext } from "./store/filters-context";
+import ButtonList from "./components/ButtonList";
 
-function App() {
+function App(props: any) {
+  const [filters, setFilters] = useState([]);
   const [title, setTitle] = useState("");
   const [headlines, setHeadlines] = useState<string[]>([]);
   const [button, setButton] = useState<boolean>(false);
+  const theme = useTheme();
+  const [value, setValue] = React.useState(0);
+  const filtersCtx = useContext(FiltersContext);
+
   const useStyles = makeStyles((theme) => ({
     root: {
       backgroundColor: theme.palette.background.paper,
@@ -67,70 +75,40 @@ function App() {
       );
   }, [button]);
 
-  // React.useEffect(() => {
-  //   /**
-  //    * We can't use "chrome.runtime.sendMessage" for sending messages from React.
-  //    * For sending messages from React we need to specify which tab to send it to.
-  //    */
-  //   chrome.tabs &&
-  //     chrome.tabs.query(
-  //       {
-  //         active: true,
-  //         currentWindow: true,
-  //       },
-  //       (tabs) => {
-  //         /**
-  //          * Sends a single message to the content script(s) in the specified tab,
-  //          * with an optional callback to run when a response is sent back.
-  //          *
-  //          * The runtime.onMessage event is fired in each content script running
-  //          * in the specified tab for the current extension.
-  //          */
-  //         chrome.tabs.sendMessage(
-  //           tabs[0].id || 0,
-  //           { type: "GET_DOM" } as DOMMessage,
-  //           (response: DOMMessageResponse) => {
-  //             setTitle(response.title);
-  //             setHeadlines(response.headlines);
-  //           }
-  //         );
-  //       }
-  //     );
-  // }, [button]);
-  const theme = useTheme();
-  const [value, setValue] = React.useState(0);
-
   return (
-    <div className="App">
-      <h1>Axie Market Maker</h1>
-      <AppBar position="static" color="default">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="fullWidth"
-          aria-label="full width tabs example"
+    <AxieFiltersProvider>
+      <div className="App">
+        <h1>Axie Market Maker</h1>
+        <AppBar position="static" color="default">
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            variant="fullWidth"
+            aria-label="full width tabs example"
+          >
+            <Tab label="Market Filter" {...a11yProps(0)} />
+            <Tab label="Setup" {...a11yProps(1)} />
+          </Tabs>
+        </AppBar>
+        <SwipeableViews
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+          index={value}
+          onChangeIndex={handleChangeIndex}
         >
-          <Tab label="Market Filter" {...a11yProps(0)} />
-          <Tab label="Setup" {...a11yProps(1)} />
-        </Tabs>
-      </AppBar>
-      <SwipeableViews
-        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-        index={value}
-        onChangeIndex={handleChangeIndex}
-      >
-        <TabPanel value={value} index={0} dir={theme.direction}>
-          <button className="btn-19" onClick={buttonHandler}>
-            Reptile Termi
-          </button>
-        </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
-          <FilterSetup />
-        </TabPanel>
-      </SwipeableViews>
-    </div>
+          <TabPanel value={value} index={0} dir={theme.direction}>
+            <ButtonList />
+            {/* <button className="btn-19" onClick={buttonHandler}>
+              Reptile Termi
+            </button> */}
+          </TabPanel>
+          <TabPanel value={value} index={1} dir={theme.direction}>
+            <FilterSetup />
+          </TabPanel>
+        </SwipeableViews>
+      </div>
+    </AxieFiltersProvider>
   );
 }
 export default App;

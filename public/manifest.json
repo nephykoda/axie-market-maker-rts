@@ -13,7 +13,7 @@
       "js": ["./static/js/content.js"]
     }
   ],
-  "permissions": ["activeTab"],
+  "permissions": ["activeTab", "storage"],
   "icons": {
     "16": "beast-16.png",
     "48": "beast-48.png",

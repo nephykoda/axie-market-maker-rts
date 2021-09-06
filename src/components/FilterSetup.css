@@ -1,0 +1,14 @@
+.wrapping-container {
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.text {
+  font-weight: normal;
+}
+
+.label {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: italic;
+}
