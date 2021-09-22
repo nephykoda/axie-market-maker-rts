@@ -1,7 +1,7 @@
 {
-  "name": "Axie Market Maker ReactJs",
-  "description": "Lets you annotate web pages and persists those annotations across page visits.",
-  "version": "0.0.1",
+  "name": "Axie Market Maker ReactJs - Mac",
+  "description": "Godlike Axie Market Searcher",
+  "version": "0.0.5",
   "manifest_version": 3,
   "action": {
     "default_popup": "index.html",

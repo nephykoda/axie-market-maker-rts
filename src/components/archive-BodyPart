@@ -1,0 +1,568 @@
+<!--
+  {/* FIRST ITEM */}
+    <>
+      <div
+        style={{
+          margin: 5,
+          backgroundColor: colors.grey[800],
+          padding: 10,
+          width: "auto",
+          borderRadius: 10,
+        }}
+      >
+        <Grid container>
+          <Grid>
+            <Grid container direction="column" justifyContent="center" style={{ height: "100%" }}>
+              <Grid item>
+                <div style={{ height: 2 }}></div>
+              </Grid>
+              <img style={{ height: 40, padding: 2 }} src={img2} alt="" />
+            </Grid>
+          </Grid>
+          <Grid item xs={4} style={{ padding: 5 }}>
+            <Grid container direction="column" justifyContent="center" style={{ height: "100%" }}>
+              <Grid item className="bold" style={{ fontSize: 14, color: "white" }}>
+                {part.partId}
+              </Grid>
+              <Grid item className="regular" style={{ fontSize: 11, color: colors.grey[400] }}>
+                {part.card}
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid className="gillsans" item xs style={{}}>
+            <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              style={{ height: "100%", width: 50 }}
+            >
+              <Grid
+                item
+                style={{
+                  width: "100%",
+                  fontSize: 13,
+                  color: "#fbce11",
+                }}
+              >
+                <div
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    backgroundColor: colors.grey[900],
+                    borderTopLeftRadius: 5,
+                    borderTopRightRadius: 5,
+                  }}
+                >
+                  <Grid>
+                    <img style={{ marginLeft: 8, height: 10 }} src={nrg} alt="" />
+                  </Grid>
+                  <Grid className="" style={{ marginRight: 5 }}>
+                    {part.energy}
+                  </Grid>
+                </div>
+              </Grid>
+              <Grid
+                item
+                style={{
+                  width: "100%",
+                  fontSize: 13,
+                  color: "#d04664",
+                }}
+              >
+                <div
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    justifyContent: "space-between",
+                    backgroundColor: colors.grey[900],
+                    display: "flex",
+                  }}
+                >
+                  <Grid>
+                    <img style={{ marginLeft: 8, height: 10 }} src={atk} alt="" />{" "}
+                  </Grid>
+                  <Grid style={{ marginRight: 5 }}>{part.atk}</Grid>
+                </div>
+              </Grid>
+              <Grid
+                item
+                style={{
+                  width: "100%",
+
+                  fontSize: 13,
+                  color: "#009e66",
+                }}
+              >
+                <div
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    backgroundColor: colors.grey[900],
+                    borderBottomLeftRadius: 5,
+                    borderBottomRightRadius: 5,
+                  }}
+                >
+                  <Grid>
+                    <img style={{ marginLeft: 8, height: 10 }} src={def} alt="" />{" "}
+                  </Grid>
+                  <Grid style={{ marginRight: 5 }}>{part.def}</Grid>
+                </div>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            xs={5}
+            justifyContent="center"
+            alignItems="center"
+            style={{
+              borderRadius: 5,
+              width: "auto",
+              backgroundColor: "#32271a",
+              textAlign: "center",
+              fontSize: 10,
+              color: "white",
+              padding: 6,
+            }}
+          >
+            <Grid item className="bold">
+              {part.info}
+            </Grid>
+          </Grid>
+        </Grid>
+      </div>
+    </>
+   {/* SECOND ITEM */}
+      <div
+        style={{
+          margin: 5,
+          backgroundColor: colors.grey[800],
+          padding: 10,
+          width: "auto",
+          borderRadius: 10,
+        }}
+      >
+        <Grid container>
+          <Grid>
+            {" "}
+            <Grid container direction="column" justifyContent="center" style={{ height: "100%" }}>
+              <Grid item>
+                <div style={{ height: 4 }}></div>
+              </Grid>
+              <Grid
+                item
+                style={{
+                  display: "flex",
+                  borderRadius: 5,
+                  height: 40,
+                  width: 40,
+                  fontSize: 11,
+                  backgroundColor: colors.yellow[600],
+                }}
+              >
+                <img style={{ padding: 4 }} src={img} alt="" />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={4} style={{ padding: 5 }}>
+            <Grid container direction="column" justifyContent="center" style={{ height: "100%" }}>
+              <Grid item style={{ fontSize: 14, color: "white" }}>
+                <b>{part.partId}</b>
+              </Grid>
+              <Grid item style={{ fontSize: 11, color: colors.grey[400] }}>
+                {part.card}
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs style={{}}>
+            <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              style={{ height: "100%", width: 50 }}
+            >
+              <Grid
+                item
+                style={{
+                  width: "100%",
+                  fontWeight: "bold",
+                  fontSize: 13,
+                  color: colors.yellow[500],
+                }}
+              >
+                <div
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    backgroundColor: colors.grey[900],
+                    borderTopLeftRadius: 5,
+                    borderTopRightRadius: 5,
+                  }}
+                >
+                  <Grid>
+                    <img style={{ marginLeft: 8, height: 10 }} src={nrg} alt="" />
+                  </Grid>
+                  <Grid style={{ marginRight: 5 }}>{part.energy}</Grid>
+                </div>
+              </Grid>
+              <Grid
+                item
+                style={{
+                  width: "100%",
+                  fontWeight: "bolder",
+                  fontSize: 13,
+                  color: colors.red[500],
+                }}
+              >
+                <div
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    justifyContent: "space-between",
+                    backgroundColor: colors.grey[900],
+                    display: "flex",
+                  }}
+                >
+                  <Grid>
+                    <img style={{ marginLeft: 8, height: 10 }} src={atk} alt="" />{" "}
+                  </Grid>
+                  <Grid style={{ marginRight: 5 }}>{part.atk}</Grid>
+                </div>
+              </Grid>
+              <Grid
+                item
+                style={{
+                  width: "100%",
+                  fontWeight: "bolder",
+                  fontSize: 13,
+                  color: colors.green[500],
+                }}
+              >
+                <div
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    backgroundColor: colors.grey[900],
+                    borderBottomLeftRadius: 5,
+                    borderBottomRightRadius: 5,
+                  }}
+                >
+                  <Grid>
+                    <img style={{ marginLeft: 8, height: 10 }} src={def} alt="" />{" "}
+                  </Grid>
+                  <Grid style={{ marginRight: 5 }}>{part.def}</Grid>
+                </div>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            xs={5}
+            justifyContent="center"
+            alignItems="center"
+            style={{
+              borderRadius: 5,
+              width: "auto",
+              backgroundColor: colors.grey[900],
+              textAlign: "center",
+              fontSize: 10,
+              color: "white",
+              padding: 6,
+            }}
+          >
+            <Grid item>{part.info}</Grid>
+          </Grid>
+        </Grid>
+      </div>
+      {/* THIRD ITEM */}
+      <div
+        style={{
+          margin: 5,
+          backgroundColor: "#634c36",
+          padding: 10,
+          width: "auto",
+          borderRadius: 10,
+        }}
+      >
+        <Grid container>
+          <Grid>
+            <Grid container direction="column" justifyContent="center" style={{ height: "100%" }}>
+              <Grid item>
+                <div style={{ height: 4 }}></div>
+              </Grid>
+              <Grid
+                item
+                style={{
+                  display: "flex",
+                  borderRadius: 5,
+                  height: 40,
+                  width: 40,
+                  fontSize: 11,
+                  backgroundColor: colors.yellow[600],
+                }}
+              >
+                <img style={{ padding: 4 }} src={img} alt="" />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={4} style={{ padding: 5 }}>
+            <Grid container direction="column" justifyContent="center" style={{ height: "100%" }}>
+              <Grid item style={{ fontSize: 14, color: "white" }}>
+                <b>{part.partId}</b>
+              </Grid>
+              <Grid item style={{ fontSize: 11, color: colors.grey[400] }}>
+                {part.card}
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs>
+            <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              style={{ height: "100%", width: 50 }}
+            >
+              <Grid
+                item
+                style={{
+                  width: "100%",
+                  fontWeight: "bold",
+                  fontSize: 13,
+                  color: colors.yellow[500],
+                }}
+              >
+                <div
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    backgroundColor: "#32271a",
+                    borderTopLeftRadius: 5,
+                    borderTopRightRadius: 5,
+                  }}
+                >
+                  <Grid>
+                    <img style={{ marginLeft: 8, height: 10 }} src={nrg} alt="" />
+                  </Grid>
+                  <Grid style={{ marginRight: 5 }}>{part.energy}</Grid>
+                </div>
+              </Grid>
+              <Grid
+                item
+                style={{
+                  width: "100%",
+                  fontWeight: "bolder",
+                  fontSize: 13,
+                  color: colors.red[500],
+                }}
+              >
+                <div
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    justifyContent: "space-between",
+                    backgroundColor: "#32271a",
+                    display: "flex",
+                  }}
+                >
+                  <Grid>
+                    <img style={{ marginLeft: 8, height: 10 }} src={atk} alt="" />{" "}
+                  </Grid>
+                  <Grid style={{ marginRight: 5 }}>{part.atk}</Grid>
+                </div>
+              </Grid>
+              <Grid
+                item
+                style={{
+                  width: "100%",
+                  fontWeight: "bolder",
+                  fontSize: 13,
+                  color: colors.green[500],
+                }}
+              >
+                <div
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    backgroundColor: "#32271a",
+                    borderBottomLeftRadius: 5,
+                    borderBottomRightRadius: 5,
+                  }}
+                >
+                  <Grid>
+                    <img style={{ marginLeft: 8, height: 10 }} src={def} alt="" />{" "}
+                  </Grid>
+                  <Grid style={{ marginRight: 5 }}>{part.def}</Grid>
+                </div>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            xs={5}
+            justifyContent="center"
+            alignItems="center"
+            style={{
+              borderRadius: 5,
+              width: "auto",
+              backgroundColor: "#463625",
+              textAlign: "center",
+              fontSize: 10,
+              color: "white",
+              padding: 6,
+            }}
+          >
+            <Grid item>{part.info}</Grid>
+          </Grid>
+        </Grid>
+      </div>
+      {/* FOURTH ITEM */}
+      <div
+        style={{
+          margin: 5,
+          backgroundColor: "#634c36",
+          padding: 10,
+          width: "auto",
+          borderRadius: 10,
+        }}
+      >
+        <Grid container>
+          <Grid>
+            <Grid container direction="column" justifyContent="center" style={{ height: "100%" }}>
+              <Grid item>
+                <div style={{ height: 4 }}></div>
+              </Grid>
+
+              <img style={{ padding: 4, height: 40 }} src={img2} alt="" />
+            </Grid>
+          </Grid>
+          <Grid item xs={4} style={{ padding: 5 }}>
+            <Grid container direction="column" justifyContent="center" style={{ height: "100%" }}>
+              <Grid item style={{ fontSize: 14, color: "white" }}>
+                <b>{part.partId}</b>
+              </Grid>
+              <Grid item style={{ fontSize: 11, color: colors.grey[400] }}>
+                {part.card}
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs style={{}}>
+            <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              style={{ height: "100%", width: 50 }}
+            >
+              <Grid
+                item
+                style={{
+                  width: "100%",
+                  fontWeight: "bold",
+                  fontSize: 13,
+                  color: colors.yellow[500],
+                }}
+              >
+                <div
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    backgroundColor: "#32271a",
+                    borderTopLeftRadius: 5,
+                    borderTopRightRadius: 5,
+                  }}
+                >
+                  <Grid>
+                    <img style={{ marginLeft: 8, height: 10 }} src={nrg} alt="" />
+                  </Grid>
+                  <Grid style={{ marginRight: 5 }}>{part.energy}</Grid>
+                </div>
+              </Grid>
+              <Grid
+                item
+                style={{
+                  width: "100%",
+                  fontWeight: "bolder",
+                  fontSize: 13,
+                  color: colors.red[500],
+                }}
+              >
+                <div
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    justifyContent: "space-between",
+                    backgroundColor: "#32271a",
+                    display: "flex",
+                  }}
+                >
+                  <Grid>
+                    <img style={{ marginLeft: 8, height: 10 }} src={atk} alt="" />{" "}
+                  </Grid>
+                  <Grid style={{ marginRight: 5 }}>{part.atk}</Grid>
+                </div>
+              </Grid>
+              <Grid
+                item
+                style={{
+                  width: "100%",
+                  fontWeight: "bolder",
+                  fontSize: 13,
+                  color: colors.green[500],
+                }}
+              >
+                <div
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    backgroundColor: "#32271a",
+                    borderBottomLeftRadius: 5,
+                    borderBottomRightRadius: 5,
+                  }}
+                >
+                  <Grid>
+                    <img style={{ marginLeft: 8, height: 10 }} src={def} alt="" />{" "}
+                  </Grid>
+                  <Grid style={{ marginRight: 5 }}>{part.def}</Grid>
+                </div>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            xs={5}
+            justifyContent="center"
+            alignItems="center"
+            style={{
+              borderRadius: 5,
+              width: "auto",
+              backgroundColor: "#463625",
+              textAlign: "center",
+              fontSize: 10,
+              color: "white",
+              padding: 6,
+            }}
+          >
+            <Grid item>{part.info}</Grid>
+          </Grid>
+        </Grid>
+      </div>
+     -->

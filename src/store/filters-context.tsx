@@ -18,16 +18,7 @@ const FiltersContextProvider: React.FC = (props) => {
   const [axieFilters, setAxieFilters] = useState<AxieFilters[]>([]);
 
   const addAxieFiltersHandler = (axieFilter: AxieFilters) => {
-    const newAxieFilter = new AxieFilters(
-      axieFilter.name,
-      axieFilter.classes,
-      axieFilter.parts,
-      axieFilter.breed,
-      axieFilter.health,
-      axieFilter.speed,
-      axieFilter.skill,
-      axieFilter.morale
-    );
+    const newAxieFilter = new AxieFilters(axieFilter.name, axieFilter.classes, axieFilter.parts, axieFilter.breed, axieFilter.health, axieFilter.speed, axieFilter.skill, axieFilter.morale);
     // JSON.stringify(newAxieFilter);
     setAxieFilters((prevAxieFilters) => {
       let newAxieFilterObject = prevAxieFilters.concat(newAxieFilter);
@@ -43,9 +34,7 @@ const FiltersContextProvider: React.FC = (props) => {
 
   const removeTodoHandler = (axieFilterId: string) => {
     setAxieFilters((prevAxieFilters) => {
-      return prevAxieFilters.filter(
-        (axieFilter) => axieFilter.id !== axieFilterId
-      );
+      return prevAxieFilters.filter((axieFilter) => axieFilter.id !== axieFilterId);
     });
   };
 
@@ -81,11 +70,7 @@ const FiltersContextProvider: React.FC = (props) => {
     }
   }, [axieFilters]);
 
-  return (
-    <FiltersContext.Provider value={contextValue}>
-      {props.children}
-    </FiltersContext.Provider>
-  );
+  return <FiltersContext.Provider value={contextValue}>{props.children}</FiltersContext.Provider>;
 };
 
 export default FiltersContextProvider;
