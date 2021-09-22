@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect } from "react";
+import React, { useContext, useRef, useEffect, useState } from "react";
 import { Button, ButtonGroup, Typography } from "@material-ui/core";
 import { FiltersContext } from "../store/filters-context";
 import { IconButton } from "@material-ui/core";
@@ -19,19 +19,22 @@ import { createTheme, ThemeProvider, withStyles } from "@material-ui/core/styles
 
 // React.FC<> allows you to define extra props on top of standard ones
 const ButtonList: React.FC<{ onSelectButton: ({}) => void }> = (props) => {
-  const [open, setOpen] = React.useState(false);
-  const [hover, setHover] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
-  const [placement, setPlacement] = React.useState<PopperPlacementType>();
+  const [open, setOpen] = useState(false);
+  const [hover, setHover] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+  const [placement, setPlacement] = useState<PopperPlacementType>();
   const filtersCtx = useContext(FiltersContext);
+  const [tooltipId, setTooltipId] = useState<string | undefined>();
   // const itemsRef = useRef(HTMLDivElement | null)[]>([])
   const axieFilterItems = filtersCtx.items;
   const refs: React.MutableRefObject<React.RefObject<any>[]> = useRef(Array.from({ length: axieFilterItems.length }, (a) => React.createRef()));
 
-  const handleDropDownItemHover = (event: any) => {
+  const handleDropDownItemHover = (event: any, keyId: string | undefined) => {
+    setTooltipId(keyId);
     setHover(true);
   };
   const handleDropDownItemHoverExit = (event: any) => {
+    setTooltipId("");
     setHover(false);
   };
 
@@ -72,7 +75,7 @@ const ButtonList: React.FC<{ onSelectButton: ({}) => void }> = (props) => {
             </Button>
             {/* <ThemeProvider theme={theme}> */}
             {/* TOOLTIP FOR MOUSEOVER EFFECT: REPLACE 'open' WITH 'open={!open && hover}'  */}
-            <Tooltip id={item.id} arrow open placement="bottom-end" title={<ButtonPreview axieFilter={item} />}>
+            <Tooltip key={item.id} arrow open={!open && hover && item.id === tooltipId} placement="bottom-end" title={<ButtonPreview axieFilter={item} />}>
               <Button
                 style={{ borderRadius: "0px 30px 30px 0px" }}
                 color="primary"
@@ -82,7 +85,7 @@ const ButtonList: React.FC<{ onSelectButton: ({}) => void }> = (props) => {
                 aria-label="select merge strategy"
                 aria-haspopup="menu"
                 onClick={handleToggle}
-                onMouseOver={handleDropDownItemHover}
+                onMouseOver={(e) => handleDropDownItemHover(e, item.id)}
                 onMouseLeave={handleDropDownItemHoverExit}
                 // ref={(el: HTMLButtonElement | null) => (itemsRef.current[i] = el)}
                 ref={refs.current[index]}

@@ -31,7 +31,7 @@ const ButtonPreview: FunctionComponent<ButtonPreviewProps> = (props) => {
 
   let axieClassDivHeight: any;
   if (classesStats.classes !== undefined) {
-    axieClassDivHeight = classesStats.classes?.length > 8 ? 51 : classesStats.classes?.length > 4 ? 34 : classesStats.classes?.length > 0 ? 17 : 0;
+    axieClassDivHeight = classesStats.classes?.length > 7 ? 40 : 20;
   }
 
   return (
