@@ -53,7 +53,7 @@ const StatsPreview: FunctionComponent<StatsPreviewProps> = (props) => {
     props.max === undefined ? undefined : (
       <Grid item>
         <Grid alignItems="center" container direction="column">
-          <Grid className="regular" style={{ fontSize: 8 }} item>
+          <Grid className="regular" style={{ fontSize: 7 }} item>
             MAX
           </Grid>
           <Grid className="bold" style={{ marginTop: -3 }} item>
@@ -66,7 +66,7 @@ const StatsPreview: FunctionComponent<StatsPreviewProps> = (props) => {
     props.min === undefined ? undefined : (
       <Grid item>
         <Grid alignItems="center" container direction="column">
-          <Grid className="regular" style={{ fontSize: 8 }} item>
+          <Grid className="regular" style={{ fontSize: 7 }} item>
             MIN
           </Grid>
           <Grid className="bold" style={{ marginTop: -3 }} item>
@@ -77,7 +77,8 @@ const StatsPreview: FunctionComponent<StatsPreviewProps> = (props) => {
     );
 
   return (
-    <Grid xs container alignItems="center" justifyContent="space-between" style={{ color: "black", backgroundColor: "white", borderRadius: 5, paddingRight: 5, paddingLeft: 5, paddingBottom: 4 }}>
+    <Grid xs container alignItems="center" justifyContent="space-between" style={{ color: "white", border: "1px solid white", borderRadius: 5, paddingRight: 2, paddingLeft: 2, paddingBottom: 4 }}>
+      {/* <Grid xs container alignItems="center" justifyContent="space-between" style={{ color: "black", backgroundColor: "white", borderRadius: 5, paddingRight: 5, paddingLeft: 5, paddingBottom: 4 }}>*/}
       <Grid>
         <img style={{ marginBottom: -7, height: 20 }} src={statIcon} alt="" />
         {/* <img style={{ marginTop: 5, marginBottom: 0, height: 20 }} src={statIcon} alt="" /> */}

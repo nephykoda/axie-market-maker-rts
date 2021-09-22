@@ -74,8 +74,8 @@ const ButtonList: React.FC<{ onSelectButton: ({}) => void }> = (props) => {
               <div className="regular">{item.name}</div>
             </Button>
             {/* <ThemeProvider theme={theme}> */}
-            {/* TOOLTIP FOR MOUSEOVER EFFECT: REPLACE 'open' WITH 'open={!open && hover}'  */}
-            <Tooltip key={item.id} arrow open={!open && hover && item.id === tooltipId} placement="bottom-end" title={<ButtonPreview axieFilter={item} />}>
+            {/* TOOLTIP FOR MOUSEOVER EFFECT: REPLACE 'open' WITH 'open={!open && hover && item.id === tooltipId}'  */}
+            <Tooltip key={item.id} arrow open placement="bottom-end" title={<ButtonPreview axieFilter={item} />}>
               <Button
                 style={{ borderRadius: "0px 30px 30px 0px" }}
                 color="primary"

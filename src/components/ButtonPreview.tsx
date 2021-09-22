@@ -1,4 +1,4 @@
-import { Component, FunctionComponent } from "react";
+import { Component, FunctionComponent, useEffect, useState } from "react";
 import AxieFilters from "../model/filters";
 import Grid from "@material-ui/core/Grid";
 import Aqua from "../images/classes/class_aquatic.svg";
@@ -18,6 +18,8 @@ interface ButtonPreviewProps {
 }
 
 const ButtonPreview: FunctionComponent<ButtonPreviewProps> = (props) => {
+  const [statGridXS, setStatGridXS]: any = useState(6);
+
   let classesStats = { ...props.axieFilter };
   delete classesStats.id;
   delete classesStats.name;
@@ -31,7 +33,7 @@ const ButtonPreview: FunctionComponent<ButtonPreviewProps> = (props) => {
 
   let axieClassDivHeight: any;
   if (classesStats.classes !== undefined) {
-    axieClassDivHeight = classesStats.classes?.length > 7 ? 40 : 20;
+    axieClassDivHeight = classesStats.classes?.length > 7 ? 40 : classesStats.classes?.length > 0 ? 20 : 0;
   }
 
   return (
@@ -59,7 +61,7 @@ const ButtonPreview: FunctionComponent<ButtonPreviewProps> = (props) => {
             let statsPreview;
             if (min || max !== undefined) {
               statsPreview = (
-                <Grid style={{ margin: 1 }} item xs={12}>
+                <Grid style={{ marginTop: 5 }} item xs={statGridXS}>
                   {/* <Grid item xs> */}
                   <StatsPreview min={min} max={max} stat={statValueCapital} />
                 </Grid>
