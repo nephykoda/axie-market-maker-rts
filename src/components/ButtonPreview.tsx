@@ -19,6 +19,44 @@ interface ButtonPreviewProps {
 
 const ButtonPreview: FunctionComponent<ButtonPreviewProps> = (props) => {
   const [statGridXS, setStatGridXS]: any = useState(6);
+  const [length, setLength]: any = useState(0);
+  const [largestIndex, setLargestIndex] = useState(0);
+  const [valueArray, setValueArray] = useState<string[]>([]);
+  let lengthz = 0;
+
+  const handleLength = (stat: string) => {
+    let x: string[] = [...valueArray];
+    if (!x.includes(stat)) {
+      x.push(stat);
+      setValueArray(x);
+      setLength(length + 1);
+    }
+  };
+
+  useEffect(() => {
+    if (lengthz !== 0) {
+      // console.log(lengthz / 2);
+      setLength(lengthz / 2);
+    }
+  }, [lengthz]);
+  useEffect(() => {
+    // console.log(valueArray);
+  }, [valueArray]);
+
+  useEffect(() => {
+    // if (length !== 0) {
+    //   // console.log(length);
+    //   setLargestIndex(length - 1);
+    //   if (length % 2 === 1) {
+    //     setStatGridXS(12);
+    //   }
+    // }
+    // console.log(length);
+  }, [length]);
+
+  useEffect(() => {
+    // console.log(largestIndex);
+  }, [largestIndex]);
 
   let classesStats = { ...props.axieFilter };
   delete classesStats.id;
@@ -59,14 +97,35 @@ const ButtonPreview: FunctionComponent<ButtonPreviewProps> = (props) => {
             }
             let statValueCapital = statValue[0].charAt(0).toUpperCase() + statValue[0].slice(1);
             let statsPreview;
+            // console.log(length);
+            // let y = [...valueArray];
+            // console.log(y[y.length]);
             if (min || max !== undefined) {
+              // console.log(valueArray[valueArray.length]);
               statsPreview = (
-                <Grid style={{ marginTop: 5 }} item xs={statGridXS}>
+                <Grid style={{ marginTop: 5 }} item xs={6}>
                   {/* <Grid item xs> */}
-                  <StatsPreview min={min} max={max} stat={statValueCapital} />
+                  <StatsPreview lengthHandler={handleLength} min={min} max={max} stat={statValueCapital} />
                 </Grid>
               );
+              // if (length % 2 === 1 && statValueCapital === valueArray[valueArray.length]) {
+              //   console.log("hi");
+              //   statsPreview = (
+              //     <Grid style={{ marginTop: 5 }} item xs={6}>
+              //       {/* <Grid item xs> */}
+              //       <StatsPreview lengthHandler={(x: string) => handleLength(x)} min={min} max={max} stat={statValueCapital} />
+              //     </Grid>
+              //   );
+              // } else {
+              //   statsPreview = (
+              //     <Grid style={{ marginTop: 5 }} item xs>
+              //       {/* <Grid item xs> */}
+              //       <StatsPreview lengthHandler={handleLength} min={min} max={max} stat={statValueCapital} />
+              //     </Grid>
+              //   );
+              // }
             }
+
             return <>{statsPreview}</>;
           })}
         </Grid>

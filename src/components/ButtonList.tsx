@@ -22,6 +22,7 @@ const ButtonList: React.FC<{ onSelectButton: ({}) => void }> = (props) => {
   const [open, setOpen] = useState(false);
   const [hover, setHover] = useState(false);
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+  const [currentButtonId, setCurrentButtonId] = useState<any>();
   const [placement, setPlacement] = useState<PopperPlacementType>();
   const filtersCtx = useContext(FiltersContext);
   const [tooltipId, setTooltipId] = useState<string | undefined>();
@@ -31,6 +32,7 @@ const ButtonList: React.FC<{ onSelectButton: ({}) => void }> = (props) => {
 
   const handleDropDownItemHover = (event: any, keyId: string | undefined) => {
     setTooltipId(keyId);
+    setCurrentButtonId(keyId);
     setHover(true);
   };
   const handleDropDownItemHoverExit = (event: any) => {
@@ -38,7 +40,10 @@ const ButtonList: React.FC<{ onSelectButton: ({}) => void }> = (props) => {
     setHover(false);
   };
 
-  const handleMenuItemClick = (event: React.MouseEvent<HTMLLIElement, MouseEvent>, index: number) => {
+  const handleMenuItemClick = (event: React.MouseEvent<HTMLLIElement, MouseEvent>, index: number, axieFilterId: any) => {
+    if (index === 1) {
+      filtersCtx.removeAxieFilters(axieFilterId);
+    }
     setOpen(false);
   };
 
@@ -53,8 +58,6 @@ const ButtonList: React.FC<{ onSelectButton: ({}) => void }> = (props) => {
     setOpen(false);
   };
 
-  const btnOptions = ["Edit", "Delete"];
-
   const buttonHandler = (itemId: any) => {
     const selectedFilter = filtersCtx.items.filter((item) => item.id === itemId);
     props.onSelectButton(selectedFilter[0]);
@@ -62,7 +65,7 @@ const ButtonList: React.FC<{ onSelectButton: ({}) => void }> = (props) => {
 
   return (
     <div>
-      {filtersCtx.items.map((item, index) => (
+      {filtersCtx.items.length > 0 ? filtersCtx.items.map((item: any, index) => (
         <>
           <ButtonGroup style={{ boxShadow: "0 0 0 0", margin: 5 }} variant="contained" color="primary" aria-label="contained primary button group" key={item.id}>
             <Button
@@ -75,7 +78,7 @@ const ButtonList: React.FC<{ onSelectButton: ({}) => void }> = (props) => {
             </Button>
             {/* <ThemeProvider theme={theme}> */}
             {/* TOOLTIP FOR MOUSEOVER EFFECT: REPLACE 'open' WITH 'open={!open && hover && item.id === tooltipId}'  */}
-            <Tooltip key={item.id} arrow open placement="bottom-end" title={<ButtonPreview axieFilter={item} />}>
+            <Tooltip key={item.id} arrow open={!open && hover && item.id === tooltipId} placement="bottom-end" title={<ButtonPreview axieFilter={item} />}>
               <Button
                 style={{ borderRadius: "0px 30px 30px 0px" }}
                 color="primary"
@@ -99,20 +102,24 @@ const ButtonList: React.FC<{ onSelectButton: ({}) => void }> = (props) => {
             <Paper style={{ padding: 0 }}>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList style={{ padding: 0 }} id="split-button-menu">
-                  {btnOptions.map((option, i) => (
-                    <MenuItem key={option} onClick={(event) => handleMenuItemClick(event, i)}>
-                      {option === "Edit" ? <EditIcon style={{ padding: 0, height: 13 }} /> : <CancelIcon style={{ padding: 0, height: 13 }} />}
-                      <div style={{ fontSize: 13 }} className="regular">
-                        {option}
-                      </div>
-                    </MenuItem>
-                  ))}
+                  {/* <MenuItem>
+                    <EditIcon style={{ padding: 0, height: 13 }} />{" "}
+                    <div style={{ fontSize: 13 }} className="regular">
+                      Edit
+                    </div>
+                  </MenuItem> */}
+                  <MenuItem onClick={filtersCtx.removeAxieFilters.bind(null, currentButtonId)}>
+                    <CancelIcon style={{ padding: 0, height: 13 }} />{" "}
+                    <div style={{ fontSize: 13 }} className="regular">
+                      Delete
+                    </div>
+                  </MenuItem>
                 </MenuList>
               </ClickAwayListener>
             </Paper>
           </Popper>
         </>
-      ))}
+      )) : <p style={{color: "#8E8E8E", fontStyle: "italic"}}>No Saved Filters. Head over to 'Setup' tab to setup a new filter!</p>}
     </div>
   );
 };

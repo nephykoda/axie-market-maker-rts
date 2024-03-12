@@ -23,6 +23,7 @@ interface StatsPreviewProps {
   stat: string;
   min: string | number | AxieParts | undefined;
   max: string | number | AxieParts | undefined;
+  lengthHandler: (x: string) => void;
 }
 
 const StatsPreview: FunctionComponent<StatsPreviewProps> = (props) => {
@@ -75,17 +76,22 @@ const StatsPreview: FunctionComponent<StatsPreviewProps> = (props) => {
         </Grid>
       </Grid>
     );
+  if (!(minVal === undefined && maxVal === undefined)) {
+    props.lengthHandler(props.stat);
+  }
 
   return (
-    <Grid xs container alignItems="center" justifyContent="space-between" style={{ color: "white", border: "1px solid white", borderRadius: 5, paddingRight: 2, paddingLeft: 2, paddingBottom: 4 }}>
-      {/* <Grid xs container alignItems="center" justifyContent="space-between" style={{ color: "black", backgroundColor: "white", borderRadius: 5, paddingRight: 5, paddingLeft: 5, paddingBottom: 4 }}>*/}
-      <Grid>
-        <img style={{ marginBottom: -7, height: 20 }} src={statIcon} alt="" />
-        {/* <img style={{ marginTop: 5, marginBottom: 0, height: 20 }} src={statIcon} alt="" /> */}
+    <div style={{ padding: 2 }}>
+      <Grid xs container alignItems="center" justifyContent="space-between" style={{ color: "white", border: "1px solid white", borderRadius: 5, paddingRight: 2, paddingLeft: 2, paddingBottom: 4 }}>
+        {/* <Grid xs container alignItems="center" justifyContent="space-between" style={{ color: "black", backgroundColor: "white", borderRadius: 5, paddingRight: 5, paddingLeft: 5, paddingBottom: 4 }}>*/}
+        <Grid>
+          <img style={{ marginBottom: -7, height: 20 }} src={statIcon} alt="" />
+          {/* <img style={{ marginTop: 5, marginBottom: 0, height: 20 }} src={statIcon} alt="" /> */}
+        </Grid>
+        {minVal}
+        {maxVal}
       </Grid>
-      {minVal}
-      {maxVal}
-    </Grid>
+    </div>
   );
 };
 

@@ -43,6 +43,7 @@ import Skill2 from "../images/stats/Skill-2.svg";
 import Morale from "../images/stats/Morale.svg";
 import Morale1 from "../images/stats/Morale-1.svg";
 import Morale2 from "../images/stats/Morale-2.svg";
+import { indigo } from "@material-ui/core/colors";
 
 export class AxieParts {
   partId: string;
@@ -339,7 +340,7 @@ const FilterSetup: FunctionComponent<FilterSetupProps> = () => {
   return (
     <div>
       <div className="wrapping-container" style={{ marginBottom: 10 }}>
-        <div className="black" style={{ marginBottom: 15 }}>
+        <div className="black" style={{ marginBottom: 15}}>
           Body Parts & Cards
           <Autocomplete
             onChange={(event: any, value: any | null) => handlePartChange(event, value)}
@@ -579,8 +580,8 @@ const axieParts = [
   { partId: "Goldfish", card: "Swift Escape", part: "AquaBack", energy: 1, atk: 110, def: 20, info: "Apply Speed+ to this Axie for 2 rounds when attacked." },
   { partId: "Sponge", card: "Shipwreck", part: "AquaBack", energy: 1, atk: 60, def: 90, info: "Apply Attack+ to this Axie if its shield breaks." },
   { partId: "Anemone", card: "Aqua Vitality", part: "AquaBack", energy: 1, atk: 80, def: 40, info: "Successful attacks restore 50 HP for each Anemone part this Axie posseses." },
+  { partId: "Perch", card: "Spinal Tap", part: "AquaBack", energy: 1, atk: 100, def: 20, info: "Prioritize idle target when comboed with at least 2 additional cards." },
   { partId: "Anemone", card: "Aquaponics", part: "AquaHorn", energy: 1, atk: 80, def: 40, info: "Successful attacks restore 50 HP for each Anemone part this Axie posseses." },
-  { partId: "Perch", card: "Spinal Trap", part: "AquaHorn", energy: 1, atk: 100, def: 20, info: "Prioritize idle target when comboed with at least 2 additional cards." },
   { partId: "Babylonia", card: "Shell Jab", part: "AquaHorn", energy: 1, atk: 100, def: 50, info: "Deal 130% damage when attacking an idle target." },
   { partId: "Teal Shell", card: "Deep Sea Gore", part: "AquaHorn", energy: 1, atk: 50, def: 80, info: "Add 30% to this Axie's shield when attacking." },
   { partId: "Clamshell", card: "Clam Slash", part: "AquaHorn", energy: 1, atk: 110, def: 40, info: "Apply Attack+ to this Axie when attacking Beast, Bug, or Mech targets." },
@@ -624,7 +625,7 @@ const axieParts = [
   { partId: "Cupid", card: "Heart Break", part: "BirdBack", energy: 1, atk: 120, def: 20, info: "Apply Morale- to enemy for 2 rounds." },
   { partId: "Raven", card: "Ill-omened", part: "BirdBack", energy: 1, atk: 110, def: 30, info: "Apply Jinx to target for 2 rounds." },
   { partId: "Pigeon Post", card: "Blackmail", part: "BirdBack", energy: 1, atk: 120, def: 10, info: "Transfer all debuffs on this Axie to target." },
-  { partId: "Kingfisher", card: "Patient hunter", part: "BirdBack", energy: 1, atk: 130, def: 0, info: "Target an Aquatic class enemy if this Axie's HP is below 50%" },
+  { partId: "Kingfisher", card: "Patient Hunter", part: "BirdBack", energy: 1, atk: 130, def: 0, info: "Target an Aquatic class enemy if this Axie's HP is below 50%" },
   { partId: "Tri Feather", card: "Triple Threat", part: "BirdBack", energy: 0, atk: 30, def: 10, info: "Attack twice if this Axie has any debuffs." },
   { partId: "Eggshell", card: "Eggbomb", part: "BirdHorn", energy: 1, atk: 120, def: 0, info: "Apply Aroma on this Axie until next round." },
   { partId: "Cuckoo", card: "Cockadoodledoo", part: "BirdHorn", energy: 0, atk: 0, def: 40, info: "Apply Attack+ to this Axie." },
@@ -633,7 +634,7 @@ const axieParts = [
   { partId: "Wing Horn", card: "Smart Shot", part: "BirdHorn", energy: 1, atk: 50, def: 10, info: "Skip the closest target if there are 2 or more enemies remaining." },
   { partId: "Feather Spear", card: "Feather Lunge", part: "BirdHorn", energy: 1, atk: 110, def: 50, info: 'Deal 120% damage when chained with another "Lunge" card.' },
   { partId: "Doubletalk", card: "Soothing Song", part: "BirdMouth", energy: 1, atk: 80, def: 0, info: "Apply Sleep to target." },
-  { partId: "Peace maker", card: "Peace Traety", part: "BirdMouth", energy: 1, atk: 120, def: 30, info: "Apply Attack- on target." },
+  { partId: "Peace maker", card: "Peace Treaty", part: "BirdMouth", energy: 1, atk: 120, def: 30, info: "Apply Attack- on target." },
   { partId: "Hungry Bird", card: "Insectivore", part: "BirdMouth", energy: 1, atk: 110, def: 40, info: "Target Bug class enemy if this Axie's HP is below 50%." },
   { partId: "Little Owl", card: "Dark Swoop", part: "BirdMouth", energy: 1, atk: 25, def: 0, info: "Target fastest enemy." },
   { partId: "Swallow", card: "Early Bird", part: "BirdTail", energy: 1, atk: 110, def: 20, info: "Deal 120% damage if this Axie attacks first." },
@@ -706,11 +707,11 @@ const axieParts = [
   { partId: "Croc", card: "Nile Strike", part: "ReptileBack", energy: 1, atk: 90, def: 60, info: "Apply Speed- to target for 2 rounds." },
   { partId: "Unko", card: "Poo Fling", part: "ReptileHorn", energy: 1, atk: 30, def: 80, info: "Apply Stench to target until end of round." },
   { partId: "Scaly Spear", card: "Scaly Lunge", part: "ReptileHorn", energy: 1, atk: 100, def: 50, info: 'Deal 120% damage when chained with another "lunge" card.' },
-  { partId: "Cerastes", card: "Surprise Invation", part: "ReptileHorn", energy: 1, atk: 90, def: 60, info: "Deal 130% damage if target is faster than this Axie." },
+  { partId: "Cerastes", card: "Surprise Invasion", part: "ReptileHorn", energy: 1, atk: 90, def: 60, info: "Deal 130% damage if target is faster than this Axie." },
   { partId: "Scaly Spoon", card: "Tiny Catapult", part: "ReptileHorn", energy: 1, atk: 80, def: 40, info: "Reflect 50% of ranged damage back at attacker." },
   { partId: "Incisor", card: "Disarm", part: "ReptileHorn", energy: 1, atk: 100, def: 40, info: "Apply Speed- to attacker for 2 rounds." },
   { partId: "Bumpy", card: "Overgrow Keratin", part: "ReptileHorn", energy: 1, atk: 90, def: 30, info: "Recover 20 shield per turn." },
-  { partId: "Toothless bite", card: "Sneaky Raid", part: "ReptileMouth", energy: 0, atk: 140, def: 0, info: "Target the furthest enemy." },
+  { partId: "Toothless Bite", card: "Sneaky Raid", part: "ReptileMouth", energy: 0, atk: 20, def: 0, info: "Target the furthest enemy." },
   { partId: "Kotaro", card: "Kotaro Bite", part: "ReptileMouth", energy: 1, atk: 80, def: 20, info: "Gain 1 energy if target is faster than this Axie." },
   { partId: "Razor Bite", card: "Why So Serious", part: "ReptileMouth", energy: 1, atk: 90, def: 50, info: "Heal this Axie by damage inflicted with this card to Aquatic targets." },
   { partId: "Tiny Turtle", card: "Chomp", part: "ReptileMouth", energy: 1, atk: 80, def: 50, info: "Apply Stun to enemy when comboed with at least 2 additional cards." },
