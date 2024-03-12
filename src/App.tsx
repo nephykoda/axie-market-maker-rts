@@ -9,6 +9,7 @@ import AxieFiltersProvider from "./store/filters-context";
 import { FiltersContext } from "./store/filters-context";
 import ButtonList from "./components/ButtonList";
 import { colors } from "@material-ui/core";
+import BannerImage from './images/banner.png';
 
 const initialFilterState = {};
 
@@ -86,16 +87,16 @@ function App(props: any) {
 
   return (
     <AxieFiltersProvider>
-      <div className="App" style={{ backgroundColor: colors.indigo[50] }}>
-        <h1>Axie Market Maker 🚀</h1>
-        <AppBar position="static" color="default">
+      <div className="App" style={{ backgroundColor: "#fff" }}>
+        <img src={BannerImage} width={475}/>
+        <AppBar position="static" color="default" style={{boxShadow: "none", backgroundColor: "#fff"}}>
           <Tabs value={value} onChange={handleChange} indicatorColor="primary" textColor="primary" variant="fullWidth" aria-label="full width tabs example">
             <Tab label="Market Filter" {...a11yProps(0)} />
             <Tab label="Setup" {...a11yProps(1)} />
           </Tabs>
         </AppBar>
         <SwipeableViews axis={theme.direction === "rtl" ? "x-reverse" : "x"} index={value} onChangeIndex={handleChangeIndex}>
-          <TabPanel value={value} index={0} dir={theme.direction} style={{ marginBottom: 60 }}>
+          <TabPanel value={value} index={0} dir={theme.direction} style={{ marginBottom: 60}}>
             <ButtonList onSelectButton={buttonHandler} />
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
@@ -128,40 +129,3 @@ function TabPanel(props: any) {
     </div>
   );
 }
-
-/* <ul className="SEOForm">
-        <li className="SEOValidation">
-          <div className="SEOValidationField">
-            <span className="SEOValidationFieldTitle">Title</span>
-            <span
-              className={`SEOValidationFieldStatus ${
-                title.length < 30 || title.length > 65 ? "Error" : "Ok"
-              }`}
-            >
-              {title.length} Characters
-            </span>
-          </div>
-          <div className="SEOVAlidationFieldValue">{title}</div>
-        </li>
-
-        <li className="SEOValidation">
-          <div className="SEOValidationField">
-            <span className="SEOValidationFieldTitle">Main Heading</span>
-            <span
-              className={`SEOValidationFieldStatus ${
-                headlines.length !== 1 ? "Error" : "Ok"
-              }`}
-            >
-              {headlines.length}
-            </span>
-          </div>
-          <div className="SEOVAlidationFieldValue">
-            <ul>
-              {headlines.map((headline, index) => (
-                <li key={index}>{headline}</li>
-              ))}
-            </ul>
-          </div>
-        </li>
-      </ul>
- */
