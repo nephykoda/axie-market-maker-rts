@@ -1,46 +1,49 @@
-# Getting Started with Create React App
+> ⚠️ This Chrome Extension is no longer functional as Axie Infinity marketplace has been revamped as of 05 May 2022 - *read blog post [here](https://blog.axieinfinity.com/p/axie-marketplace-update)*
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![](/src/images/banner.png)
+# Axie Traits Filter Bookmark - Chrome Extension
 
-## Available Scripts
+## Overview
+Axie Market Maker is a Google Chrome Browser Extension developed in React TypeScript to enhance user experience on the [Axie Infinity marketplace](https://app.axieinfinity.com/marketplace/). 
 
-In the project directory, you can run:
+This extension allows users to create & save custom filters such as body parts, classes & stats of an Axie. These saved filters can then be quickly applied to search the Axie marketplace with just a click, saving users time & effort - without having to leave their browser tabs open.
 
-### `yarn start`
+*Note: [Axie Infinity](https://axieinfinity.com/) is a blockchain-based digital pet universe where players collect, breed, and battle fantasy creatures called Axies.*
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Motivation
+This extension was created to address a limitation in the Axie marketplace where users had to manually save individual searches or keep browser tabs open for specific searches. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+With the rapid buy / sell activities during the peak of Axie Infinity, having a quick and efficient way to search for Axies with desired traits and stats became essential. Axie Market Maker simplifies this process by enabling users to save and apply custom filters effortlessly.
 
-### `yarn test`
+## Features
+🛟 **Custom Filters**: Users can easily create custom filters by selecting Axie attributes. Users can save it for future use.
+* **Body Parts**: 36 Back Parts | 36 Horn Parts | 24 Mouth Parts | 36 Tail Parts
+* **Axie Classes**: 9 Classes <img src="src/images/classes/class_aquatic.svg" width="12"/><img src="src/images/classes/class_beast.svg" width="12"/><img src="src/images/classes/class_bird.svg" width="12"/><img src="src/images/classes/class_bug.svg" width="12"/><img src="src/images/classes/class_dawn.svg" width="12"/><img src="src/images/classes/class_dusk.svg" width="12"/><img src="src/images/classes/class_mech.svg" width="12"/><img src="src/images/classes/class_plant.svg" width="12"/><img src="src/images/classes/class_reptile.svg" width="12"/>
+* **Stats**: 4 Stats (27-61 Pts) <img src="src/images/stats/Health-2.svg" height="10"/> <img src="src/images/stats/Speed-2.svg" height="10"/> <img src="src/images/stats/Skill-2.svg" height="10"/> <img src="src/images/stats/Morale-2.svg" height="10"/>
+* **Breed**: Number of times the Axie has been bred <img src="src/images/stats/Breed-2.svg" height="10"/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+🔍 **Quick Automated Searches**: Saved filters can be quickly applied to search the Axie marketplace with just a click by utilizing DOM evaluator to automate the process, saving users from manual input.
 
-### `yarn build`
+🗂️ **Filter Saving**: Filters are saved in user's local storage to ensure persistence across sessions.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
+1. Clone the repository
+2. Run build
+```
+npm run build
+```
+3. Open Chrome and go to `chrome://extensions`.
+4. Enable `Developer Mode` in the top right corner
+5. Click on `Load Unpacked` & select the `build` folder
+6. Hooray! The extension is ready for use 😎
+7. (Optional) Pin the extension to use it quickly
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
+1. Click on the Axie Market Maker icon in the Chrome toolbar to open the extension.
+2. Go to the `Setup` tab & createa a custom filter by selecting the desired Axie attributes.
+3. Save the filter for future use.
+4. To apply a save filter, go to [Axie Infinity marketplace](https://app.axieinfinity.com/marketplace/) & simply click on any of your filters.
+5. Sit back, relax & watch your the extension automatically enter the selected filter into the marketplace & initiate the search!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
+*By utilizing the Axie Market Maker extension, users can streamline their Axie marketplace experience, saving time and effort while navigating the dynamic world of Axie Infinity. Happy Axie hunting! 🎮🦊*
