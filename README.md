@@ -1,14 +1,14 @@
-> ⚠️ This Chrome Extension is no longer functional as Axie Infinity marketplace has been revamped as of 05 May 2022 - *read blog post [here](https://blog.axieinfinity.com/p/axie-marketplace-update)*
+> ⚠️ This project is no longer maintained, updated, and its functionality may be deprecated.
 
 ![](/src/images/banner.png)
 # Axie Traits Filter Bookmark - Chrome Extension
 
 ## Overview
-Axie Market Maker is a Google Chrome Browser Extension developed in React TypeScript to enhance user experience on the [Axie Infinity marketplace](https://app.axieinfinity.com/marketplace/). 
+[Axie Infinity](https://axieinfinity.com/) is a blockchain-based digital pet universe where players collect, breed, and battle fantasy creatures called Axies.
 
-This extension allows users to create & save custom filters such as body parts, classes & stats of an Axie. These saved filters can then be quickly applied to search the Axie marketplace with just a click, saving users time & effort - without having to leave their browser tabs open.
+Axie Market Maker is a Google Chrome Browser Extension developed in React TypeScript. to enhance Axie Infinity users' experience on the [Axie Infinity marketplace](https://app.axieinfinity.com/marketplace/). 
 
-*Note: [Axie Infinity](https://axieinfinity.com/) is a blockchain-based digital pet universe where players collect, breed, and battle fantasy creatures called Axies.*
+<i>**Note**: This Chrome Extension is no longer functional as Axie Infinity marketplace has been revamped as of 05 May 2022 - read blog post [here](https://blog.axieinfinity.com/p/axie-marketplace-update)</i>
 
 ### Example
 | <img src="src/images/classes/class_aquatic.svg" width="12"/> Aqua Shrimp | <img src="src/images/classes/class_dusk.svg" width="12"/> Dusk Termi |
@@ -93,5 +93,20 @@ npm run build
 
     <img src="src/images/docs/filtersetup-delete.gif" height="250"/>
 
----
-*By utilizing the Axie Market Maker extension, users can streamline their Axie marketplace experience, saving time and effort while navigating the dynamic world of Axie Infinity. Happy Axie hunting! 🎮🦊*
+
+7. **Happy Axie-hunting! 🎮🦊**
+
+## Future Enhancement
+🧬 **Saved Genes Filter**
+- Users will be able to view & filter axies by their genes
+- As genes are not directly visible & able to be filtered, this feature will make use of scanning each axie & its genes, then fiter the axies once more after applying the official filter search
+
+📲 **Multi-Device Account Sync**
+- Users will have the ability to create personalised profiles, allowing them to save their custom filters & access them across different browsers & devices
+- Users will have an easier time managing & tracking Axies on the marketplace searches
+
+## Contributors
+* [nephydecode](https://github.com/nephydecode/)
+
+## License
+This project is licensed under the [MIT License](https://opensource.org/license/MIT).
